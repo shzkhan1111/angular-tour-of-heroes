@@ -1,0 +1,68 @@
+<!-- Ran into error ran npm install -->
+<h1>My Products</h1>
+<div>
+    <!-- This is cmming from a variable in Ts file-->
+    <!-- string interpolation -->
+    {{productName}}
+<!-- Now change it on button click  
+single '' because "" are intrepreted as typescript codde
+-->
+<!-- event binding -->
+<button (click)="productName = 'A button'">text change </button>
+
+<!-- property Binding -->
+<!-- disabled added like an attribute -->
+<button (click)="productName = 'A button'" disabled>disabled added like an attribute  </button>
+<!-- but it also sets the property of an underlying Dom object and we can bind it by adding by 
+adding [] -->
+<button (click)="productName = 'A button'" [disabled] = "isDisabled">disabled added like an attribute Binding</button>
+<button (click)="productName = 'A button'" (click) = "isDisabled = false">Button to enable previous button</button>
+<br />
+<p>Now Two way binding
+    <br> use [()] and bind to ngModel [(ngModel)] and then provide the value you want to bind like 
+    [(ngModel)] = 
+    to enable ngModel directive app module and import an additional module
+    <br>import  FormsModule from '@angular/forms';
+and also add that module to the list of imports  in app.ts file
+
+error was faced again to solve brackets were removed 
+</p>
+
+<input type="text" [(ngModel)] = "productName">
+ <p><b>Directives</b></p>
+<p>Click Button we add new product</p>
+
+
+<p>Making it so that on disabled false it should not be shown
+    the button will when button to enable previous is clicked
+</p>
+<button (click)="onAddProduct()" *ngIf="!isDisabled">not Disabled Add Product</button>
+<button (click)="onAddProduct()" *ngIf="isDisabled">disabled Add Product</button>
+
+<p>show the producs Array : we will use Directives using *ngFor
+    <br> * tells angular that it is a structural directive that will change the element
+</p>
+<div *ngFor="let p of products">{{p}}</div>
+
+</div>
+<div>
+    <h2>Custom binding and events</h2>
+    <p>Component need to communicate with each other
+        <br>now making a product component that encapulates a single product
+        the input decorator is used to bind the value from child to parent
+        to bind from the parent we will [value in child] = 'Value that needs to be passed'
+    </p>
+    <app-product-single-display (productClicked)="onRemoveProduct(p)"
+     *ngFor="let p of products" [productName]="p"></app-product-single-display>
+    <p>also the other way around when we change in child parent should be updated as well
+        <br>
+        We need to emit a custom event created by importing Event Emmiter and also Output
+        <br>Output decorator is use to send data and we will <br>
+        @0utput () productclicked = new EventEmitter();
+        in the child<br>
+        when the div section of the child is clicked it will emit an event which parent 
+        will listen to 
+        change in the previous code 
+
+    </p>
+</div>
