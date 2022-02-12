@@ -66,3 +66,26 @@ error was faced again to solve brackets were removed
 
     </p>
 </div>
+
+<h2>Forms</h2>  
+<form (ngSubmit)="AddProductViaForm(f)" #f="ngForm">
+    <p>since we imported the forms module angular will manage it for us behind the scenes 
+    prevent submision if we add a special event 
+    and manages the validity of the form
+    we can add form (ngSubmit) = "onAddProduct()"
+    this will execute that whenever we submit the form 
+    doing so we can remove the two way binding and in the input and set ngModel
+    <<<< is replaced by & 
+    &input type=text ngModel this will register the input as a control to angular then assign a 
+    name and apply validators like required
+    angular makes a js object storing the info about our form and we can get the reference to tat 
+    by adding a local reference to the form element like # &form ...#xyz
+    using this a and by assign = #xyz = "ngForm" angular detects the syntax and gives reference to form
+    object it created implicitly behind the scenes
+    and we can pass it into the &form (ngSubmit) ='fun(f)' #f = 'ngForm'
+    for above example see console log after via form entire form oject is displayed
+    </p>
+    <input type="text" ngModel name = "productName" required>
+    <button type="submit">Add Product Via Form</button>
+    
+</form>

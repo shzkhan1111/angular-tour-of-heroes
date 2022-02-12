@@ -26,5 +26,12 @@ export class ProductComponent implements OnInit {
   onRemoveProduct(productName:string){
     this.products=  this.products.filter(p => p!== productName);
   } 
+  AddProductViaForm(form){
+    console.log('via form')
+    console.log(form)
+    if(form.valid){
+        this.products.push(form.value.productName)
+    }
+  }
 
 }
