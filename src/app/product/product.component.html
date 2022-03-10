@@ -1,5 +1,18 @@
 <!-- Ran into error ran npm install -->
 <h1>My Products</h1>
+<!-- angular from the backend maintains the js obj and storing it and we can get access by 
+storing a local reference and we can get access by using #
+angular sees this and gives us access to object it created behind the scenes  and se can pass it as an 
+argument to add product() -->
+<form (ngSubmit)="onAddProduct(f)" #f="ngForm">
+    <p>Forms</p>
+    <!-- we can remove the two way binding 
+    Register this input as a control to angular -->
+    <input type="text" ngModel name="productName" required > 
+<button type="submit">btn type=submit will send a request to the form</button>
+
+</form>
+<p>Forms Ends </p>
 <div>
     <!-- This is cmming from a variable in Ts file-->
     <!-- string interpolation -->
